@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Damnam | About</title>
+
+    <link rel="stylesheet" href="css/shared-navbar.css">
+    <link rel="stylesheet" href="css/about.css">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- KHMER FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <i class="fa-solid fa-seedling"></i>
+                <span>Damnam</span>
+            </div>
+
+            <!-- MENU -->
+            <ul class="nav-menu">
+
+                <li>
+                    <a href="index.html" data-en="Home" data-kh="ទំព័រដើម">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="crops.html" data-en="Crops" data-kh="ដំណាំ">
+                        Crops
+                    </a>
+                </li>
+
+                <li>
+                    <a href="learning.html" data-en="Learning" data-kh="ការសិក្សា">
+                        Learning
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html" class="active" data-en="About" data-kh="អំពីយើង">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html" data-en="Contact" data-kh="ទំនាក់ទំនង">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- RIGHT CONTROLS -->
+            <div class="nav-right">
+
+                <!-- LANGUAGE -->
+                <div class="language-box">
+                    <i class="fa-solid fa-globe"></i>
+
+                    <select id="langSwitch">
+                        <option value="en">EN</option>
+                        <option value="kh">KH</option>
+                    </select>
+                </div>
+
+                <!-- USER MENU -->
+                <div class="user-box">
+
+                    <!-- GUEST -->
+                    <div id="guestMenu">
+                        <a href="login.html" class="login-btn" data-en="Login" data-kh="ចូលគណនី">
+                            Login
+                        </a>
+                    </div>
+
+                    <!-- USER -->
+                    <div id="userMenu" class="hidden">
+
+                        <button id="userBtn" class="user-btn">
+                            <i class="fa-solid fa-user"></i>
+                            <span id="userName">User</span>
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdownMenu">
+
+                            <a id="dashboardLink" href="#" data-en="Dashboard" data-kh="ផ្ទាំងគ្រប់គ្រង">
+                                Dashboard
+                            </a>
+
+                            <button id="logoutBtn" data-en="Logout" data-kh="ចាកចេញ">
+                                Logout
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- HERO -->
+    <section class="about-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-box">
+            <h2 data-en="About Damnam" data-kh="អំពីដំណាំ">About Damnam</h2>
+            <p data-en="Supporting Cambodian farmers with smart agriculture technology and modern learning."
+                data-kh="គាំទ្រកសិករកម្ពុជាជាមួយបច្ចេកវិទ្យាកសិកម្មឆ្លាតវៃ និងការសិក្សាទំនើប។">
+                Supporting Cambodian farmers with smart agriculture technology and modern learning.
+            </p>
+        </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="mission-section">
+
+        <div class="container mission-grid">
+
+            <div class="mission-image">
+
+                <img src="asset/images/2.png">
+
+            </div>
+
+            <div class="mission-content">
+
+                <span data-en="Our Mission" data-kh="បេសកកម្មរបស់យើង">
+
+                    Our Mission
+
+                </span>
+
+                <h2 data-en="Helping Farmers Learn Modern Agriculture" data-kh="ជួយកសិករសិក្សាកសិកម្មទំនើប">
+
+                    Helping Farmers Learn Modern Agriculture
+
+                </h2>
+
+                <p data-en="Damnam provides modern farming knowledge, learning tutorials, and smart agriculture solutions for Cambodian farmers."
+                    data-kh="ដំណាំផ្តល់ចំណេះដឹងកសិកម្មទំនើប មេរៀនសិក្សា និងដំណោះស្រាយឆ្លាតវៃសម្រាប់កសិករកម្ពុជា។">
+
+                    Damnam provides modern farming knowledge,
+                    learning tutorials,
+                    and smart agriculture solutions for Cambodian farmers.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+    <section class="feature-section">
+
+        <div class="container feature-grid">
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-seedling"></i>
+
+                <h3 data-en="Modern Farming" data-kh="កសិកម្មទំនើប">
+
+                    Modern Farming
+
+                </h3>
+
+                <p data-en="Learn smart agriculture techniques and modern crop management."
+                    data-kh="សិក្សាបច្ចេកទេសកសិកម្មឆ្លាតវៃ និងការគ្រប់គ្រងដំណាំទំនើប។">
+
+                    Learn smart agriculture techniques and modern crop management.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-book-open"></i>
+
+                <h3 data-en="Learning Tutorials" data-kh="មេរៀនសិក្សា">
+
+                    Learning Tutorials
+
+                </h3>
+
+                <p data-en="Watch videos and access step-by-step farming guides."
+                    data-kh="មើលវីដេអូ និងការណែនាំកសិកម្មជាជំហានៗ។">
+
+                    Watch videos and access step-by-step farming guides.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h3 data-en="Farmer Community" data-kh="សហគមន៍កសិករ">
+
+                    Farmer Community
+
+                </h3>
+
+                <p data-en="Connect farmers across Cambodia and share knowledge."
+                    data-kh="ភ្ជាប់កសិករទូទាំងប្រទេស និងចែករំលែកចំណេះដឹង។">
+
+                    Connect farmers across Cambodia and share knowledge.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- VISION -->
+    <section class="vision-section">
+
+        <div class="container">
+
+            <h2 data-en="Our Vision" data-kh="ចក្ខុវិស័យរបស់យើង">
+
+                Our Vision
+
+            </h2>
+
+            <p data-en="To become Cambodia’s leading digital agriculture platform for education, smart farming, and community support."
+                data-kh="ក្លាយជាវេទិកាកសិកម្មឌីជីថលឈានមុខគេនៅកម្ពុជា សម្រាប់ការអប់រំ កសិកម្មឆ្លាតវៃ និងការគាំទ្រសហគមន៍។">
+
+                To become Cambodia’s leading digital agriculture platform
+                for education,
+                smart farming,
+                and community support.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-about">
+
+                <div class="footer-logo">
+
+                    <i class="fa-solid fa-seedling"></i>
+
+                    <span>Damnam</span>
+
+                </div>
+
+                <p data-en="Supporting Cambodian farmers with smart agriculture technology and modern learning."
+                    data-kh="គាំទ្រកសិករកម្ពុជាជាមួយបច្ចេកវិទ្យាកសិកម្មឆ្លាតវៃ និងការសិក្សាទំនើប។">
+
+                    Supporting Cambodian farmers with smart agriculture technology and modern learning.
+
+                </p>
+
+                <div class="footer-social">
+
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+
+                    <a href="#"><i class="fa-brands fa-telegram"></i></a>
+
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+
+                </div>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3 data-en="Quick Links" data-kh="តំណភ្ជាប់រហ័ស">
+
+                    Quick Links
+
+                </h3>
+
+                <ul>
+
+                    <li><a href="index.html">Home</a></li>
+
+                    <li><a href="crops.html">Crops</a></li>
+
+                    <li><a href="learning.html">Learning</a></li>
+
+                    <li><a href="contact.html">Contact</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h3 data-en="Contact Info" data-kh="ព័ត៌មានទំនាក់ទំនង">
+
+                    Contact Info
+
+                </h3>
+
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    damnam@gmail.com
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    +855 12 345 678
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Phnom Penh
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- LANGUAGE -->
+    <script>
+
+        const langSwitch = document.getElementById("langSwitch");
+
+        function switchLang(lang) {
+
+            document.querySelectorAll("[data-en]").forEach(el => {
+
+                el.innerText = el.getAttribute(`data-${lang}`);
+
+            });
+
+            document.body.classList.toggle(
+                "khmer",
+                lang === "kh"
+            );
+
+        }
+
+        langSwitch.addEventListener("change", (e) => {
+
+            switchLang(e.target.value);
+
+        });
+
+    </script>
+
+    <script>
+        // fallback openCart for pages without cart implementation
+        if (typeof openCart !== 'function') {
+            function openCart() {
+                // redirect to crops page where cart is implemented
+                window.location.href = 'crops.html';
+            }
+        }
+    </script>
+
+    <script type="module" src="js/navbar-auth.js"></script>
+
+</body>
+
+</html>

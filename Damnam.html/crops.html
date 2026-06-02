@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Damnam | Crops</title>
+
+    <link rel="stylesheet" href="css/shared-navbar.css">
+    <link rel="stylesheet" href="css/crops.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <script type="module">
+
+        import { initializeApp }
+            from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+        import {
+            getFirestore,
+            collection,
+            getDocs,
+            doc,
+            updateDoc,
+            addDoc,
+            query,
+            where,
+            onSnapshot
+        }
+            from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        /* FIREBASE CONFIG */
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyAHRAnMG3Tuyav5cbZKWUgfSHwzk0b4iyg",
+            authDomain: "my-damnam.firebaseapp.com",
+            projectId: "my-damnam",
+            storageBucket: "my-damnam.firebasestorage.app",
+            messagingSenderId: "652366628351",
+            appId: "1:652366628351:web:6a0541388eec8a33a193ca",
+            measurementId: "G-G41K4XYMCR"
+
+        };
+
+        /* INIT */
+
+        const app = initializeApp(firebaseConfig);
+
+        const db = getFirestore(app);
+
+        window.db = db;
+
+        window.allCrops = [];
+
+        /* LOAD CROPS */
+
+        async function loadFirebaseCrops() {
+
+            const cropContainer =
+                document.getElementById("cropContainer");
+
+            cropContainer.innerHTML = "";
+
+            const approvedCropsQuery =
+                query(
+                    collection(db, "crops"),
+                    where("status", "==", "approved")
+                );
+
+            const snapshot =
+                await getDocs(approvedCropsQuery);
+
+            let count = 1;
+
+            window.allCrops = [];
+
+            snapshot.forEach((docItem) => {
+
+                const crop = docItem.data();
+
+                crop.id = docItem.id;
+
+                window.allCrops.push(crop);
+
+                let badge = {
+
+                    text: "In Stock",
+                    kh: "មានស្តុក",
+                    class: "in-stock"
+
+                };
+
+                if (crop.stock <= 0) {
+
+                    badge = {
+
+                        text: "Out Of Stock",
+                        kh: "អស់ស្តុក",
+                        class: "out-stock"
+
+                    };
+
+                }
+
+                cropContainer.innerHTML += `
+
+                <div class="crop-card">
+
+                    <div class="stock-badge ${badge.class}"
+                        data-en="${badge.text}"
+                        data-kh="${badge.kh}">
+
+                        ${badge.text}
+
+                    </div>
+
+                    <div class="crop-img-box">
+
+                        <img src="${crop.image}"
+                            onerror="this.src='https://via.placeholder.com/300'">
+
+                    </div>
+
+                    <div class="crop-info">
+
+                        <h3 class="crop-name"
+                            data-en="${crop.name_en}"
+                            data-kh="${crop.name_kh}">
+
+                            ${crop.name_en}
+
+                        </h3>
+
+                        <div class="crop-price">
+
+                            <span class="new-price">
+
+                                $${crop.price}
+
+                            </span>
+
+                        </div>
+
+                        <div class="stock-text"
+                            data-en="Stock : ${crop.stock} Kg"
+                            data-kh="ស្តុក ៖ ${crop.stock} គីឡូ">
+
+                            Stock : ${crop.stock} Kg
+
+                        </div>
+
+                        <div class="qty-row">
+
+                            <div class="qty-label"
+                                data-en="Quantity"
+                                data-kh="ចំនួន">
+
+                                Quantity
+
+                            </div>
+
+                            <div class="qty-box">
+
+                                <button class="qty-btn"
+                                    onclick="changeQty('qty${count}',-1)">
+
+                                    -
+
+                                </button>
+
+                                <input type="number"
+                                    id="qty${count}"
+                                    value="1"
+                                    min="1">
+
+                                <button class="qty-btn"
+                                    onclick="changeQty('qty${count}',1)">
+
+                                    +
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="card-buttons">
+
+                            <button class="buy-btn"
+                                onclick="addToCart(
+                                    '${crop.id}',
+                                    '${crop.name_en}',
+                                    ${crop.price},
+                                    'qty${count}'
+                                )"
+                                data-en="Add To Cart"
+                                data-kh="បន្ថែមទៅកន្ត្រក">
+
+                                Add To Cart
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                `;
+
+                count++;
+
+            });
+
+            applyLang();
+
+        }
+
+        window.loadFirebaseCrops = loadFirebaseCrops;
+
+        loadFirebaseCrops();
+
+        window.doc = doc;
+        window.updateDoc = updateDoc;
+        window.addDoc = addDoc;
+        window.collection = collection;
+        window.query = query;
+        window.where = where;
+        window.onSnapshot = onSnapshot;
+
+    </script>
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <i class="fa-solid fa-seedling"></i>
+                <span>Damnam</span>
+            </div>
+
+            <!-- MENU -->
+            <ul class="nav-menu">
+
+                <li>
+                    <a href="index.html" data-en="Home" data-kh="ទំព័រដើម">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="crops.html" class="active" data-en="Crops" data-kh="ដំណាំ">
+                        Crops
+                    </a>
+                </li>
+
+                <li>
+                    <a href="learning.html" data-en="Learning" data-kh="ការសិក្សា">
+                        Learning
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html" data-en="About" data-kh="អំពីយើង">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html" data-en="Contact" data-kh="ទំនាក់ទំនង">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- RIGHT CONTROLS -->
+            <div class="nav-right">
+
+                <!-- LANGUAGE -->
+                <div class="language-box">
+                    <i class="fa-solid fa-globe"></i>
+
+                    <select id="langSwitch">
+                        <option value="en">EN</option>
+                        <option value="kh">KH</option>
+                    </select>
+                </div>
+
+                <!-- USER MENU -->
+                <div class="user-box">
+
+                    <!-- GUEST -->
+                    <div id="guestMenu">
+                        <a href="login.html" class="login-btn" data-en="Login" data-kh="ចូលគណនី">
+                            Login
+                        </a>
+                    </div>
+
+                    <!-- USER -->
+                    <div id="userMenu" class="hidden">
+
+                        <button id="userBtn" class="user-btn">
+                            <i class="fa-solid fa-user"></i>
+                            <span id="userName">User</span>
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdownMenu">
+
+                            <a id="dashboardLink" href="#" data-en="Dashboard" data-kh="ផ្ទាំងគ្រប់គ្រង">
+                                Dashboard
+                            </a>
+
+                            <button id="logoutBtn" data-en="Logout" data-kh="ចាកចេញ">
+                                Logout
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CART -->
+                <button class="cart-btn" onclick="openCart()">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cartCount">0</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <section class="crops-hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-box">
+
+            <h2 data-en="Fresh Cambodian Crops" data-kh="ដំណាំស្រស់ពីកម្ពុជា">
+
+                Fresh Cambodian Crops
+
+            </h2>
+
+            <p data-en="Buy fresh vegetables and fruits directly from Cambodian farmers."
+                data-kh="ទិញបន្លែ និងផ្លែឈើស្រស់ពីកសិករកម្ពុជា។">
+
+                Buy fresh vegetables and fruits directly from Cambodian farmers.
+
+            </p>
+
+        </div>
+
+    </section>
+    <section class="search-section">
+
+        <div class="search-box">
+
+            <input type="text" id="searchInput" data-en-placeholder="Search crops..."
+                data-kh-placeholder="ស្វែងរកដំណាំ...">
+
+            <button onclick="searchCrops()">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+            </button>
+
+        </div>
+
+    </section>
+    <section class="top-banner-section">
+
+        <div class="top-banner-grid">
+
+            <div class="banner-card">
+
+                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="banner-overlay">
+
+                    <h3 data-en="Fresh Vegetables" data-kh="បន្លែស្រស់">
+                        Fresh Vegetables
+                    </h3>
+
+                    <p data-en="Healthy Organic Collection" data-kh="បន្លែធម្មជាតិសម្រាប់សុខភាព">
+
+                        Healthy Organic Collection
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="banner-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="banner-overlay">
+
+                    <h3 data-en="Fresh Fruits" data-kh="ផ្លែឈើស្រស់">
+                        Fresh Fruits
+                    </h3>
+
+                    <p data-en="Sweet Natural Fruits" data-kh="ផ្លែឈើផ្អែមធម្មជាតិ">
+
+                        Sweet Natural Fruits
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="banner-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1518843875459-f738682238a6?q=80&w=1200&auto=format&fit=crop">
+
+                <div class="banner-overlay">
+
+                    <h3 data-en="Best Quality" data-kh="គុណភាពល្អ">
+                        Best Quality
+                    </h3>
+
+                    <p data-en="Direct From Farmers" data-kh="ផ្ទាល់ពីកសិករ">
+
+                        Direct From Farmers
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="product-section">
+
+        <div class="section-header">
+
+            <h2 class="section-title" data-en="Popular Crops" data-kh="ដំណាំពេញនិយម">
+
+                Popular Crops
+
+            </h2>
+
+        </div>
+
+        <div class="crops-grid" id="cropContainer"></div>
+
+    </section>
+
+    <div id="paymentModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="cart-header">
+
+                <h3 data-en="Your Cart" data-kh="កន្ត្រករបស់អ្នក">
+
+                    Your Cart
+
+                </h3>
+
+                <button class="close-btn" onclick="closeCart()">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+            <div id="cartList"></div>
+
+            <div id="cartTotal">
+
+                Total : $0
+
+            </div>
+
+            <input id="userLocation" data-en-placeholder="Enter your location" data-kh-placeholder="បញ្ចូលទីតាំង">
+
+            <input type="hidden" id="userLat">
+
+            <input type="hidden" id="userLng">
+
+            <div id="pinnedLocationText" class="pinned-location-text" data-en="No pinned location"
+                data-kh="មិនទាន់មានទីតាំងដែលបានកំណត់">
+
+                No pinned location
+
+            </div>
+
+            <button class="pin-location-btn" onclick="pinCurrentLocation()" data-en="Pin Current Location"
+                data-kh="កំណត់ទីតាំងបច្ចុប្បន្ន">
+
+                <i class="fa-solid fa-location-crosshairs"></i>
+                Pin Current Location
+
+            </button>
+
+            <input id="userPhone" data-en-placeholder="Phone number" data-kh-placeholder="លេខទូរស័ព្ទ">
+
+            <button class="confirm-btn" onclick="confirmOrder()" data-en="Confirm Order" data-kh="បញ្ជាក់ការបញ្ជាទិញ">
+
+                Confirm Order
+
+            </button>
+
+            <button class="back-btn" onclick="closeCart()" data-en="← Back To Crops" data-kh="← ត្រឡប់ទៅដំណាំ">
+
+                ← Back To Crops
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-about">
+
+                <div class="footer-logo">
+
+                    <i class="fa-solid fa-seedling"></i>
+
+                    <span>Damnam</span>
+
+                </div>
+
+                <p data-en="Supporting Cambodian farmers with smart agriculture technology and modern learning."
+                    data-kh="គាំទ្រកសិករកម្ពុជាជាមួយបច្ចេកវិទ្យាកសិកម្មឆ្លាតវៃ និងការសិក្សាទំនើប។">
+
+                    Supporting Cambodian farmers with smart agriculture technology and modern learning.
+
+                </p>
+
+                <div class="footer-social">
+
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+
+                    <a href="#"><i class="fa-brands fa-telegram"></i></a>
+
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+
+                </div>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3 data-en="Quick Links" data-kh="តំណភ្ជាប់រហ័ស">
+
+                    Quick Links
+
+                </h3>
+
+                <ul>
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crops.html">Crops</a></li>
+                    <li><a href="learning.html">Learning</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-contact">
+
+                <h3 data-en="Contact Info" data-kh="ព័ត៌មានទំនាក់ទំនង">
+
+                    Contact Info
+
+                </h3>
+
+                <p><i class="fa-solid fa-envelope"></i> damnam@gmail.com</p>
+
+                <p><i class="fa-solid fa-phone"></i> +855 12 345 678</p>
+
+                <p><i class="fa-solid fa-location-dot"></i> Phnom Penh</p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+
+        let cart = [];
+
+        /* SEARCH */
+
+        function searchCrops() {
+
+            let value =
+                document.getElementById("searchInput")
+                    .value
+                    .toLowerCase();
+
+            let cards =
+                document.querySelectorAll(".crop-card");
+
+            cards.forEach(card => {
+
+                let text =
+                    card.innerText.toLowerCase();
+
+                card.style.display =
+                    text.includes(value)
+                        ? "block"
+                        : "none";
+
+            });
+
+        }
+
+        document
+            .getElementById("searchInput")
+            .addEventListener("keyup", searchCrops);
+
+        /* QUANTITY */
+
+        function changeQty(id, amount) {
+
+            let input =
+                document.getElementById(id);
+
+            let value =
+                parseInt(input.value);
+
+            if (isNaN(value))
+                value = 1;
+
+            value += amount;
+
+            if (value < 1)
+                value = 1;
+
+            input.value = value;
+
+        }
+
+        /* ADD TO CART */
+
+        function addToCart(cropId, name, price, qtyId) {
+
+            let qty =
+                parseInt(document.getElementById(qtyId).value);
+
+            let lang =
+                document.getElementById("langSwitch").value;
+
+            let crop =
+                window.allCrops.find(item => item.id === cropId);
+
+            if (!crop) {
+
+                alert(
+                    lang === "kh"
+                        ? "រកមិនឃើញដំណាំ"
+                        : "Crop not found"
+                );
+
+                return;
+
+            }
+
+            // FIX: Enforced strict numerical validation for dynamic strings vs numbers
+            if (qty > Number(crop.stock)) {
+
+                alert(
+                    lang === "kh"
+                        ? "ស្តុកមិនគ្រប់"
+                        : "Not enough stock"
+                );
+
+                return;
+
+            }
+
+            let found =
+                cart.find(item => item.id === cropId);
+
+            if (found) {
+
+                if (found.qty + qty > Number(crop.stock)) {
+
+                    alert(
+                        lang === "kh"
+                            ? "ស្តុកមិនគ្រប់"
+                            : "Not enough stock"
+                    );
+
+                    return;
+
+                }
+
+                found.qty += qty;
+
+            }
+
+            else {
+
+                cart.push({
+                    id: cropId,
+                    name: name,
+                    name_kh: crop.name_kh || name,
+                    image: crop.image || "",
+                    sellerId: crop.sellerId || "admin",
+                    sellerEmail: crop.sellerEmail || "admin",
+                    price: price,
+                    qty: qty
+                });
+
+            }
+
+            updateCart();
+
+            alert(
+                lang === "kh"
+                    ? "បានបន្ថែមទៅកន្ត្រក ✔"
+                    : name + " added to cart ✔"
+            );
+
+        }
+
+        /* UPDATE CART */
+
+        function updateCart() {
+
+            let total = 0;
+
+            cart.forEach(item => {
+
+                total += item.qty;
+
+            });
+
+            document.getElementById("cartCount")
+                .innerText = total;
+
+        }
+
+        /* REMOVE CART */
+
+        function removeCart(name) {
+
+            cart =
+                cart.filter(item => item.name !== name);
+
+            updateCart();
+
+            openCart();
+
+        }
+
+        /* OPEN CART */
+
+        function openCart() {
+
+            let cartList =
+                document.getElementById("cartList");
+
+            let total = 0;
+
+            let lang =
+                document.getElementById("langSwitch").value;
+
+            cartList.innerHTML = "";
+
+            if (cart.length === 0) {
+
+                cartList.innerHTML = `
+
+                <p style="padding:20px;text-align:center;">
+
+                    ${lang === "kh"
+                        ? "កន្ត្រកទទេ"
+                        : "Cart is empty"}
+
+                </p>
+
+                `;
+
+            }
+
+            cart.forEach(item => {
+
+                total += item.price * item.qty;
+
+                cartList.innerHTML += `
+
+                <div class="cart-item">
+
+                    <div>
+
+                        <strong>${item.name}</strong>
+
+                        <br>
+
+                        ${lang === "kh"
+                        ? "ចំនួន"
+                        : "Qty"} : ${item.qty}
+
+                    </div>
+
+                    <div>
+
+                        $${(item.price * item.qty).toFixed(2)}
+
+                        <br><br>
+
+                        <button
+                            class="remove-btn"
+                            onclick="removeCart('${item.name}')">
+
+                            ${lang === "kh"
+                        ? "លុប"
+                        : "Remove"}
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                `;
+
+            });
+
+            document.getElementById("cartTotal")
+                .innerText =
+                (lang === "kh"
+                    ? "សរុប"
+                    : "Total")
+                + " : $" + total.toFixed(2);
+
+            document.getElementById("paymentModal")
+                .style.display = "flex";
+
+        }
+
+        /* CLOSE CART */
+
+        function closeCart() {
+
+            document.getElementById("paymentModal")
+                .style.display = "none";
+
+        }
+
+        /* PIN LOCATION */
+
+        function pinCurrentLocation() {
+
+            let lang =
+                document.getElementById("langSwitch").value;
+
+            if (!navigator.geolocation) {
+
+                alert(
+                    lang === "kh"
+                        ? "កម្មវិធីរុករកមិនគាំទ្រទីតាំង"
+                        : "Your browser does not support location pinning"
+                );
+
+                return;
+
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+
+                    const latitude =
+                        position.coords.latitude.toFixed(6);
+
+                    const longitude =
+                        position.coords.longitude.toFixed(6);
+
+                    document.getElementById("userLat").value =
+                        latitude;
+
+                    document.getElementById("userLng").value =
+                        longitude;
+
+                    document.getElementById("pinnedLocationText")
+                        .innerText =
+                        lang === "kh"
+                            ? `បានកំណត់ទីតាំង: ${latitude}, ${longitude}`
+                            : `Pinned location: ${latitude}, ${longitude}`;
+
+                    if (
+                        document.getElementById("userLocation")
+                            .value
+                            .trim() === ""
+                    ) {
+
+                        document.getElementById("userLocation").value =
+                            `${latitude}, ${longitude}`;
+
+                    }
+
+                },
+                () => {
+
+                    alert(
+                        lang === "kh"
+                            ? "មិនអាចយកទីតាំងបានទេ"
+                            : "Could not get your location. Please allow location permission."
+                    );
+
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                }
+            );
+
+        }
+
+        /* SAVE ORDER */
+
+        async function saveOrderToDatabase(
+            cart,
+            phone,
+            location,
+            latitude,
+            longitude,
+            mapUrl,
+            total
+        ) {
+
+            return await window.addDoc(
+                window.collection(window.db, "orders"),
+                {
+                    items: cart,
+                    phone: phone,
+                    location: location,
+                    latitude: latitude,
+                    longitude: longitude,
+                    mapUrl: mapUrl,
+                    total: total,
+                    status: "pending",
+                    createdAt: Date.now()
+                }
+            );
+
+        }
+
+        /* CONFIRM ORDER */
+
+        async function confirmOrder() {
+
+            let lang =
+                document.getElementById("langSwitch").value;
+
+            if (cart.length === 0) {
+
+                alert(
+                    lang === "kh"
+                        ? "កន្ត្រកទទេ"
+                        : "Cart is empty"
+                );
+
+                return;
+
+            }
+
+            let location =
+                document.getElementById("userLocation").value.trim();
+
+            let phone =
+                document.getElementById("userPhone").value.trim();
+
+            let latitude =
+                document.getElementById("userLat").value.trim();
+
+            let longitude =
+                document.getElementById("userLng").value.trim();
+
+            let mapUrl =
+                latitude && longitude
+                    ? `https://www.google.com/maps?q=${latitude},${longitude}`
+                    : "";
+
+            if (location === "" || phone === "") {
+
+                alert(
+                    lang === "kh"
+                        ? "សូមបំពេញទីតាំង និងលេខទូរស័ព្ទ"
+                        : "Please fill location and phone"
+                );
+
+                return;
+
+            }
+
+            let total = 0;
+
+            cart.forEach(item => {
+
+                total += item.price * item.qty;
+
+            });
+
+            try {
+
+                const orderRef =
+                    await saveOrderToDatabase(
+                        cart,
+                        phone,
+                        location,
+                        latitude,
+                        longitude,
+                        mapUrl,
+                        total
+                    );
+
+                for (let item of cart) {
+
+                    let crop =
+                        window.allCrops.find(c => c.id === item.id);
+
+                    // FIX: Ensured absolute numerical deduction for accurate database updates
+                    let newStock =
+                        Number(crop.stock) - item.qty;
+
+                    if (newStock < 0)
+                        newStock = 0;
+
+                    const cropRef =
+                        window.doc(window.db, "crops", item.id);
+
+                    await window.updateDoc(cropRef, {
+
+                        stock: newStock
+
+                    });
+
+                    await window.addDoc(
+                        window.collection(window.db, "soldCrops"),
+                        {
+                            orderId: orderRef.id,
+                            cropId: item.id,
+                            cropName: item.name,
+                            cropNameKh: item.name_kh || item.name,
+                            image: item.image || crop.image || "",
+                            sellerId: item.sellerId || crop.sellerId || "admin",
+                            sellerEmail: item.sellerEmail || crop.sellerEmail || "admin",
+                            customerPhone: phone,
+                            customerLocation: location,
+                            customerLatitude: latitude,
+                            customerLongitude: longitude,
+                            customerMapUrl: mapUrl,
+                            quantity: item.qty,
+                            price: item.price,
+                            total: item.price * item.qty,
+                            status: "new",
+                            createdAt: Date.now()
+                        }
+                    );
+
+                }
+
+                alert(
+                    lang === "kh"
+                        ? "ការបញ្ជាទិញជោគជ័យ ✔"
+                        : "Order Confirmed ✔"
+                );
+
+                cart = [];
+
+                updateCart();
+
+                closeCart();
+
+                await window.loadFirebaseCrops();
+
+            }
+
+            catch (error) {
+
+                console.log(error);
+
+                alert(
+                    lang === "kh"
+                        ? "មានបញ្ហាក្នុងការបញ្ជាទិញ"
+                        : "Error confirming order"
+                );
+
+            }
+
+        }
+
+        /* LANGUAGE */
+
+        function applyLang() {
+
+            let lang =
+                document.getElementById("langSwitch").value;
+
+            document.querySelectorAll("[data-en]")
+                .forEach(el => {
+
+                    el.innerText =
+                        lang === "kh"
+                            ? el.dataset.kh
+                            : el.dataset.en;
+
+                });
+
+            document.querySelectorAll("[data-en-placeholder]")
+                .forEach(el => {
+
+                    el.placeholder =
+                        lang === "kh"
+                            ? el.dataset.khPlaceholder
+                            : el.dataset.enPlaceholder;
+
+                });
+
+            document.body.style.fontFamily =
+                lang === "kh"
+                    ? "'Noto Sans Khmer', sans-serif"
+                    : "'Poppins', sans-serif";
+
+            document.querySelectorAll("input, button, select, textarea")
+                .forEach(el => {
+
+                    el.style.fontFamily =
+                        lang === "kh"
+                            ? "'Noto Sans Khmer', sans-serif"
+                            : "'Poppins', sans-serif";
+
+                });
+
+        }
+
+        document
+            .getElementById("langSwitch")
+            .addEventListener("change", applyLang);
+
+        applyLang();
+
+        /* CLOSE MODAL WHEN CLICK OUTSIDE */
+
+        window.onclick = function (event) {
+
+            const modal =
+                document.getElementById("paymentModal");
+
+            if (event.target === modal) {
+
+                closeCart();
+
+            }
+
+        };
+
+    </script>
+
+    <script type="module" src="js/navbar-auth.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Damnam Admin</title>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/admin.css">
+
+    <!-- GOOGLE FONT -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- KHMER FONT -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-seedling"></i>
+
+            <span>
+
+                Damnam Admin
+
+            </span>
+
+        </div>
+
+        <ul class="menu-list">
+
+            <li class="menu-item active" data-target="dashboardSection">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span data-en="Dashboard" data-kh="ផ្ទាំងគ្រប់គ្រង">
+
+                    Dashboard
+
+                </span>
+
+            </li>
+
+            <li class="menu-item" data-target="homeSection">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span data-en="Admin Home" data-kh="គ្រប់គ្រងទំព័រដើម">
+
+                    Admin Home
+
+                </span>
+
+            </li>
+
+            <li class="menu-item" data-target="cropSection">
+
+                <i class="fa-solid fa-leaf"></i>
+
+                <span data-en="Admin Crops" data-kh="គ្រប់គ្រងដំណាំ">
+
+                    Admin Crops
+
+                </span>
+
+            </li>
+
+            <li class="menu-item" data-target="pendingSection">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <span data-en="Pending Crops" data-kh="ដំណាំរង់ចាំ">
+
+                    Pending Crops
+
+                </span>
+
+            </li>
+
+            <li class="menu-item" data-target="learningSection">
+
+                <i class="fa-solid fa-book-open"></i>
+
+                <span data-en="Admin Learning" data-kh="គ្រប់គ្រងការសិក្សា">
+
+                    Admin Learning
+
+                </span>
+
+            </li>
+
+            <li class="menu-item" data-target="ordersSection">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span data-en="Customer Orders" data-kh="ការបញ្ជាទិញ">
+
+                    Customer Orders
+
+                </span>
+
+            </li>
+
+            <li class="menu-item" data-target="contactSection">
+
+                <i class="fa-solid fa-message"></i>
+
+                <span data-en="Contact Messages" data-kh="សារទំនាក់ទំនង">
+
+                    Contact Messages
+
+                </span>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <h1 id="pageTitle">
+
+                Dashboard
+
+            </h1>
+
+            <div class="topbar-right">
+
+                <!-- LANGUAGE -->
+
+                <div class="language-box">
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    <select id="langSwitch">
+
+                        <option value="en">
+
+                            English
+
+                        </option>
+
+                        <option value="kh">
+
+                            Khmer
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- LOGOUT -->
+
+                <button class="logout-btn" id="logoutBtn">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span data-en="Logout" data-kh="ចាកចេញ">
+
+                        Logout
+
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboardSection" class="admin-section active-section">
+
+            <div class="stats-grid">
+
+                <div class="stats-card">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    <div>
+
+                        <h2 id="totalCrops">
+
+                            0
+
+                        </h2>
+
+                        <p data-en="Total Crops" data-kh="ចំនួនដំណាំ">
+
+                            Total Crops
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="stats-card">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <div>
+
+                        <h2 id="totalPending">
+
+                            0
+
+                        </h2>
+
+                        <p data-en="Pending Crops" data-kh="ដំណាំរង់ចាំ">
+
+                            Pending Crops
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="stats-card">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <div>
+
+                        <h2 id="totalSellers">
+
+                            0
+
+                        </h2>
+
+                        <p data-en="Total Sellers" data-kh="អ្នកលក់សរុប">
+
+                            Total Sellers
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="stats-card">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                    <div>
+
+                        <h2 id="totalLearning">
+
+                            0
+
+                        </h2>
+
+                        <p data-en="Learning Content" data-kh="មាតិកាសិក្សា">
+
+                            Learning Content
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- HOME SECTION -->
+
+        <section id="homeSection" class="admin-section">
+
+            <div class="form-box">
+
+                <h2>
+
+                    Home Page Control
+
+                </h2>
+
+                <input type="text" id="heroTitle_en" placeholder="Hero Title English">
+
+                <input type="text" id="heroTitle_kh" placeholder="Hero Title Khmer">
+
+                <textarea id="heroDesc_en" placeholder="Hero Description English"></textarea>
+
+                <textarea id="heroDesc_kh" placeholder="Hero Description Khmer"></textarea>
+
+                <input type="text" id="heroImage" placeholder="Hero Image URL">
+
+                <button id="saveHomeBtn">
+
+                    Save Home Page
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- CROP SECTION -->
+
+        <section id="cropSection" class="admin-section">
+
+            <div class="form-box">
+
+                <h2>
+
+                    Add Crop
+
+                </h2>
+
+                <input type="text" id="name_en" placeholder="Crop Name English">
+
+                <input type="text" id="name_kh" placeholder="Crop Name Khmer">
+
+                <input type="number" id="price" placeholder="Price">
+
+                <input type="number" id="stock" placeholder="Stock Kg">
+
+                <select id="category">
+
+                    <option value="grains">
+
+                        Grains
+
+                    </option>
+
+                    <option value="vegetables">
+
+                        Vegetables
+
+                    </option>
+
+                    <option value="fruits">
+
+                        Fruits
+
+                    </option>
+
+                </select>
+
+                <input type="text" id="image" placeholder="Image URL">
+
+                <div class="status-box">
+
+                    <label class="check-item">
+
+                        <input type="checkbox" id="isNew">
+
+                        New Crop
+
+                    </label>
+
+                    <label class="check-item">
+
+                        <input type="checkbox" id="isDiscount">
+
+                        Discount
+
+                    </label>
+
+                </div>
+
+                <button id="saveBtn">
+
+                    Save Crop
+
+                </button>
+
+            </div>
+
+            <!-- TABLE -->
+
+            <div class="table-box">
+
+                <h2>
+
+                    Approved Crops
+
+                </h2>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Image</th>
+
+                                <th>Name</th>
+
+                                <th>Khmer</th>
+
+                                <th>Price</th>
+
+                                <th>Stock</th>
+
+                                <th>Status</th>
+
+                                <th>Date</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="cropTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- PENDING -->
+
+        <section id="pendingSection" class="admin-section">
+
+            <div class="table-box">
+
+                <h2>
+
+                    Pending Seller Crops
+
+                </h2>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Image</th>
+
+                                <th>Seller</th>
+
+                                <th>Crop</th>
+
+                                <th>Price</th>
+
+                                <th>Stock</th>
+
+                                <th>Status</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="pendingTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- LEARNING -->
+
+        <section id="learningSection" class="admin-section">
+
+            <div class="form-box">
+
+                <h2>
+
+                    Add Learning Content
+
+                </h2>
+
+                <input type="text" id="title_en" placeholder="Title English">
+
+                <input type="text" id="title_kh" placeholder="Title Khmer">
+
+                <textarea id="desc_en" placeholder="Short Description English"></textarea>
+
+                <textarea id="desc_kh" placeholder="Short Description Khmer"></textarea>
+
+                <textarea id="content_en" placeholder="Full Content English"></textarea>
+
+                <textarea id="content_kh" placeholder="Full Content Khmer"></textarea>
+
+                <select id="learningType">
+
+                    <option value="article">Article</option>
+
+                    <option value="video">Video</option>
+
+                </select>
+
+                <select id="learningCategory">
+
+                    <option value="Farming">Farming</option>
+
+                    <option value="Vegetables">Vegetables</option>
+
+                    <option value="Fruits">Fruits</option>
+
+                    <option value="Organic">Organic</option>
+
+                    <option value="Videos">Videos</option>
+
+                </select>
+
+                <input type="text" id="learningImage" placeholder="Image URL">
+
+                <input type="text" id="video" placeholder="YouTube Video URL (only for video)">
+
+                <button id="saveLearningBtn">
+
+                    Save Learning
+
+                </button>
+
+            </div>
+
+            <div class="table-box">
+
+                <h2>
+
+                    Learning Posts
+
+                </h2>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Image</th>
+
+                                <th>Title</th>
+
+                                <th>Category</th>
+
+                                <th>Type</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="learningTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ORDERS -->
+
+        <section id="ordersSection" class="admin-section">
+
+            <div class="table-box">
+
+                <h2>
+
+                    Customer Orders
+
+                </h2>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Customer</th>
+
+                                <th>Phone</th>
+
+                                <th>Total</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="ordersTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CONTACT -->
+
+        <section id="contactSection" class="admin-section">
+
+            <div class="table-box">
+
+                <h2>
+
+                    Contact Messages
+
+                </h2>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Name</th>
+
+                                <th>Email</th>
+
+                                <th>Message</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="contactTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- MENU SCRIPT -->
+
+    <script>
+
+        const menuItems =
+            document.querySelectorAll(".menu-item");
+
+        const sections =
+            document.querySelectorAll(".admin-section");
+
+        const pageTitle =
+            document.getElementById("pageTitle");
+
+        menuItems.forEach(item => {
+
+            item.addEventListener("click", () => {
+
+                menuItems.forEach(menu => {
+
+                    menu.classList.remove("active");
+
+                });
+
+                item.classList.add("active");
+
+                sections.forEach(section => {
+
+                    section.classList.remove("active-section");
+
+                });
+
+                const target =
+                    item.getAttribute("data-target");
+
+                document
+                    .getElementById(target)
+                    .classList.add("active-section");
+
+                pageTitle.innerText =
+                    item.querySelector("span").innerText;
+
+            });
+
+        });
+
+    </script>
+
+    <!-- LANGUAGE -->
+
+    <script>
+
+        function applyLang() {
+
+            const lang =
+                document.getElementById("langSwitch").value;
+
+            localStorage.setItem(
+                "damnamLang",
+                lang
+            );
+
+            document
+                .querySelectorAll("[data-en]")
+                .forEach(el => {
+
+                    el.innerText =
+
+                        lang === "kh"
+                            ? el.dataset.kh
+                            : el.dataset.en;
+
+                });
+
+            document.body.style.fontFamily =
+
+                lang === "kh"
+                    ? "'Noto Sans Khmer', sans-serif"
+                    : "'Poppins', sans-serif";
+
+        }
+
+        const savedLang =
+            localStorage.getItem("damnamLang")
+            || "en";
+
+        document.getElementById("langSwitch")
+            .value = savedLang;
+
+        applyLang();
+
+        document.getElementById("langSwitch")
+            .addEventListener(
+                "change",
+                applyLang
+            );
+
+    </script>
+
+    <!-- ADMIN JS -->
+
+    <script type="module" src="js/admin.js">
+
+    </script>
+   
+
+</body>
+
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damnam | Learning</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/learning.css">
+    <link rel="stylesheet" href="css/shared-navbar.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+
+            <div class="logo">
+                <i class="fa-solid fa-seedling"></i>
+                <span>Damnam</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li>
+                    <a href="index.html" data-en="Home" data-kh="ទំព័រដើម">Home</a>
+                </li>
+                <li>
+                    <a href="crops.html" data-en="Crops" data-kh="ដំណាំ">Crops</a>
+                </li>
+                <li>
+                    <a href="learning.html" class="active" data-en="Learning" data-kh="ការសិក្សា">Learning</a>
+                </li>
+                <li>
+                    <a href="about.html" data-en="About" data-kh="អំពីយើង">About</a>
+                </li>
+                <li>
+                    <a href="contact.html" data-en="Contact" data-kh="ទំនាក់ទំនង">Contact</a>
+                </li>
+            </ul>
+
+            <div class="nav-right">
+                <div class="language-box">
+                    <i class="fa-solid fa-globe"></i>
+                    <select id="langSwitch">
+                        <option value="en">EN</option>
+                        <option value="kh">KH</option>
+                    </select>
+                </div>
+
+                <div class="user-box">
+                    <div id="guestMenu">
+                        <a href="login.html" class="login-btn" data-en="Login" data-kh="ចូលគណនី">Login</a>
+                    </div>
+
+                    <div id="userMenu" class="hidden">
+                        <button id="userBtn" class="user-btn">
+                            <i class="fa-solid fa-user"></i>
+                            <span id="userName">User</span>
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a id="dashboardLink" href="#" data-en="Dashboard" data-kh="ផ្ទាំងគ្រប់គ្រង">Dashboard</a>
+                            <button id="logoutBtn" data-en="Logout" data-kh="ចាកចេញ">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-wrapper">
+
+            <div class="hero-left">
+                <span class="hero-tag">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span data-en="Smart Agriculture Learning" data-kh="ការសិក្សាកសិកម្មឆ្លាតវៃ">Smart Agriculture
+                        Learning</span>
+                </span>
+
+                <h1 data-en="Learn Smart Farming With Modern Videos" data-kh="សិក្សាកសិកម្មឆ្លាតវៃជាមួយវីដេអូទំនើប">
+                    Learn Smart Farming With Modern Videos
+                </h1>
+
+                <p data-en="Discover agriculture tutorials, greenhouse technology, irrigation systems, and modern farming methods for Cambodian farmers."
+                    data-kh="ស្វែងរកមេរៀនកសិកម្ម បច្ចេកវិទ្យាផ្ទះកញ្ចក់ ប្រព័ន្ធស្រោចទឹក និងវិធីកសិកម្មទំនើបសម្រាប់កសិករកម្ពុជា។">
+                    Discover agriculture tutorials, greenhouse technology, irrigation systems, and modern farming
+                    methods for Cambodian farmers.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#videos" class="btn-primary">
+                        <i class="fa-solid fa-play"></i>
+                        <span data-en="Start Learning" data-kh="ចាប់ផ្តើមសិក្សា">Start Learning</span>
+                    </a>
+                    <a href="#" class="btn-outline">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span data-en="Explore Courses" data-kh="ស្វែងរកមេរៀន">Explore Courses</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-grid">
+                    <img src="asset/images/2.png" alt="Grid Image 1">
+                    <img src="asset/images/3.png" alt="Grid Image 2">
+                    <img src="asset/images/4.png" alt="Grid Image 3">
+                    <img src="asset/images/5.png" alt="Grid Image 4">
+                    <img src="asset/images/6.png" alt="Grid Image 5">
+                    <img src="asset/images/7.png" alt="Grid Image 6">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search learning content..."
+                    data-en-placeholder="Search learning content..." data-kh-placeholder="ស្វែងរកមាតិកាសិក្សា...">
+                <button aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section">
+        <div class="container">
+            <div class="category-buttons">
+                <button class="active" data-en="All" data-kh="ទាំងអស់">All</button>
+                <button data-en="Vegetables" data-kh="បន្លែ">Vegetables</button>
+                <button data-en="Fruits" data-kh="ផ្លែឈើ">Fruits</button>
+                <button data-en="Organic" data-kh="សរីរាង្គ">Organic</button>
+                <button data-en="Videos" data-kh="វីដេអូ">Videos</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="learning-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="Crop Learning Guides" data-kh="មគ្គុទ្ទេសក៍សិក្សាដំណាំ">Crop Learning Guides</h2>
+            </div>
+            <div id="articleContainer" class="learning-grid"></div>
+        </div>
+    </section>
+
+    <section id="videos" class="video-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="Video Tutorials" data-kh="វីដេអូបង្រៀន">Video Tutorials</h2>
+            </div>
+            <div id="videoContainer" class="video-grid"></div>
+        </div>
+    </section>
+
+    <section class="tips-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-en="Farming Tips" data-kh="គន្លឹះកសិកម្ម">Farming Tips</h2>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon-wrapper"><i class="fa-solid fa-droplet"></i></div>
+                    <p data-en="Water crops early in the morning." data-kh="ស្រោចទឹកដំណាំនៅពេលព្រឹក។">Water crops early
+                        in the morning.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon-wrapper"><i class="fa-solid fa-leaf"></i></div>
+                    <p data-en="Use natural fertilizer for healthy crops."
+                        data-kh="ប្រើជីធម្មជាតិសម្រាប់ដំណាំមានសុខភាពល្អ។">Use natural fertilizer for healthy crops.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-icon-wrapper"><i class="fa-solid fa-sun"></i></div>
+                    <p data-en="Avoid strong sunlight during afternoon." data-kh="ជៀសវាងពន្លឺថ្ងៃខ្លាំងនៅពេលរសៀល។">Avoid
+                        strong sunlight during afternoon.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="articleModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeArticleBtn">✕</button>
+            <h2 id="articleTitle"></h2>
+            <p id="articleText"></p>
+        </div>
+    </div>
+
+    <div class="modal" id="videoModal">
+        <div class="modal-content video-modal-content">
+            <button class="close-modal" id="closeVideoBtn">✕</button>
+            <iframe id="videoFrame" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>Damnam</span>
+                </div>
+                <p data-en="Supporting Cambodian farmers with smart agriculture technology and modern learning."
+                    data-kh="គាំទ្រកសិករកម្ពុជាជាមួយបច្ចេកវិទ្យាកសិកម្មឆ្លាតវៃ និងការសិក្សាទំនើប។">
+                    Supporting Cambodian farmers with smart agriculture technology and modern learning.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3 data-en="Quick Links" data-kh="តំណភ្ជាប់រហ័ស">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crops.html">Crops</a></li>
+                    <li><a href="learning.html">Learning</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3 data-en="Contact Info" data-kh="ព័ត៌មានទំនាក់ទំនង">Contact Info</h3>
+                <p><i class="fa-solid fa-envelope"></i> damnam@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +855 12 345 678</p>
+                <p><i class="fa-solid fa-location-dot"></i> Phnom Penh</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const langSwitch = document.getElementById('langSwitch');
+
+            const changeLanguage = (lang) => {
+                // FIXED: Toggle Khmer font class dynamically for consistent browser support
+                if (lang === 'kh') {
+                    document.body.classList.add('khmer');
+                } else {
+                    document.body.classList.remove('khmer');
+                }
+
+                // Change text elements using dataset
+                document.querySelectorAll('[data-en]').forEach(el => {
+                    if (lang === 'kh') {
+                        el.textContent = el.getAttribute('data-kh');
+                    } else {
+                        el.textContent = el.getAttribute('data-en');
+                    }
+                });
+
+                // Change inputs placeholders
+                document.querySelectorAll('[data-en-placeholder]').forEach(input => {
+                    if (lang === 'kh') {
+                        input.setAttribute('placeholder', input.getAttribute('data-kh-placeholder'));
+                    } else {
+                        input.setAttribute('placeholder', input.getAttribute('data-en-placeholder'));
+                    }
+                });
+            };
+
+            langSwitch.addEventListener('change', (e) => {
+                changeLanguage(e.target.value);
+            });
+        });
+    </script>
+
+    <script type="module" src="js/learning.js"></script>
+    <script type="module" src="js/navbar-auth.js"></script>
+</body>
+
+</html>

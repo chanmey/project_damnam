@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title data-en="Damnam | Home" data-kh="ដាំណាំ | ទំព័រដើម">Damnam | Home</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/shared-navbar.css">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- KHMER FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
+
+            <!-- LOGO -->
+            <div class="logo">
+                <i class="fa-solid fa-seedling"></i>
+                <span>Damnam</span>
+            </div>
+
+            <!-- MENU -->
+            <ul class="nav-menu">
+                <li>
+                    <a href="index.html" class="active" data-en="Home" data-kh="ទំព័រដើម">Home</a>
+                </li>
+                <li>
+                    <a href="crops.html" data-en="Crops" data-kh="ដំណាំ">Crops</a>
+                </li>
+                <li>
+                    <a href="learning.html" data-en="Learning" data-kh="ការសិក្សា">Learning</a>
+                </li>
+                <li>
+                    <a href="about.html" data-en="About" data-kh="អំពីយើង">About</a>
+                </li>
+                <li>
+                    <a href="contact.html" data-en="Contact" data-kh="ទំនាក់ទំនង">Contact</a>
+                </li>
+            </ul>
+
+            <!-- RIGHT CONTROLS -->
+            <div class="nav-right">
+                <!-- LANGUAGE -->
+                <div class="language-box">
+                    <i class="fa-solid fa-globe"></i>
+                    <select id="langSwitch">
+                        <option value="en">EN</option>
+                        <option value="kh">KH</option>
+                    </select>
+                </div>
+
+                <!-- USER MENU -->
+                <div class="user-box">
+                    <!-- GUEST -->
+                    <div id="guestMenu">
+                        <a href="login.html" class="login-btn" data-en="Login" data-kh="ចូលគណនី">Login</a>
+                    </div>
+
+                    <!-- USER -->
+                    <div id="userMenu" class="hidden">
+                        <button id="userBtn" class="user-btn">
+                            <i class="fa-solid fa-user"></i>
+                            <span id="userName">User</span>
+                        </button>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a id="dashboardLink" href="#" data-en="Dashboard" data-kh="ផ្ទាំងគ្រប់គ្រង">Dashboard</a>
+                            <button id="logoutBtn" data-en="Logout" data-kh="ចាកចេញ">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-tag" data-en="Smart Agriculture Platform" data-kh="វេទិកាកសិកម្មឆ្លាតវៃ">
+                Smart Agriculture Platform
+            </span>
+
+            <!-- FIREBASE CONTROLLED -->
+            <h1 id="heroTitle">Loading...</h1>
+
+            <!-- FIREBASE CONTROLLED -->
+            <p id="heroDesc">Loading...</p>
+
+            <div class="hero-buttons">
+                <a href="crops.html" class="btn-primary" data-en="Explore Crops" data-kh="ស្វែងរកដំណាំ">
+                    Explore Crops
+                </a>
+                <a href="learning.html" class="btn-outline" data-en="Start Learning" data-kh="ចាប់ផ្តើមសិក្សា">
+                    Start Learning
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENTRAL PROJECT -->
+    <section class="central-project">
+        <div class="container">
+
+            <!-- TITLE -->
+            <div class="project-title">
+                <span data-en="Central Project" data-kh="គម្រោងសំខាន់">Central Project</span>
+                <h2 data-en="Modern Agriculture Learning Platform" data-kh="វេទិកាសិក្សាកសិកម្មទំនើប">
+                    Modern Agriculture Learning Platform
+                </h2>
+            </div>
+
+            <!-- TOP PRODUCTS -->
+            <div class="project-box">
+                <div class="project-header">
+                    <h3 data-en="Trending Farming" data-kh="កសិកម្មពេញនិយម">Trending Farming</h3>
+                </div>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="asset/images/2.png" alt="Rice Farming">
+                        <h4 data-en="Rice Farming" data-kh="កសិកម្មស្រូវ">Rice Farming</h4>
+                        <p data-en="Modern Farming" data-kh="កសិកម្មទំនើប">Modern Farming</p>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="asset/images/3.png" alt="Organic Crops">
+                        <h4 data-en="Organic Crops" data-kh="ដំណាំសរីរាង្គ">Organic Crops</h4>
+                        <p data-en="Healthy Agriculture" data-kh="កសិកម្មសុខភាព">Healthy Agriculture</p>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="asset/images/4.png" alt="Vegetable Guide">
+                        <h4 data-en="Vegetable Guide" data-kh="មគ្គុទេសក៍បន្លែ">Vegetable Guide</h4>
+                        <p data-en="Free Learning" data-kh="ការសិក្សាឥតគិតថ្លៃ">Free Learning</p>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="asset/images/2.png" alt="Smart System">
+                        <h4 data-en="Smart System" data-kh="ប្រព័ន្ធឆ្លាតវៃ">Smart System</h4>
+                        <p data-en="Easy For Farmers" data-kh="ងាយស្រួលសម្រាប់កសិករ">Easy For Farmers</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BANNER -->
+            <div class="project-banner">
+                <div class="banner-content">
+                    <span data-en="THE SMART FARMING PLATFORM" data-kh="វេទិកាកសិកម្មឆ្លាតវៃ">
+                        THE SMART FARMING PLATFORM
+                    </span>
+                    <h2 data-en="Learn Modern Agriculture" data-kh="សិក្សាកសិកម្មទំនើប">
+                        Learn Modern Agriculture
+                    </h2>
+                    <a href="learning.html" class="banner-btn" data-en="Explore Now" data-kh="ស្វែងរកឥឡូវ">
+                        Explore Now
+                    </a>
+                </div>
+                <img src="asset/images/3.png" alt="Smart Agriculture Platform">
+            </div>
+
+            <!-- FEATURE SECTION -->
+            <div class="feature-section">
+                <div class="feature-box green">
+                    <div>
+                        <h3 data-en="Smart Farming" data-kh="កសិកម្មឆ្លាតវៃ">Smart Farming</h3>
+                        <p data-en="Modern agriculture solution" data-kh="ដំណោះស្រាយកសិកម្មទំនើប">
+                            Modern agriculture solution
+                        </p>
+                    </div>
+                    <img src="asset/images/2.png" alt="Smart Farming">
+                </div>
+
+                <div class="feature-box yellow">
+                    <div>
+                        <h3 data-en="Easy Learning" data-kh="ការសិក្សាងាយស្រួល">Easy Learning</h3>
+                        <p data-en="Video tutorials and guides" data-kh="វីដេអូ និងមគ្គុទេសក៍">
+                            Video tutorials and guides
+                        </p>
+                    </div>
+                    <img src="asset/images/4.png" alt="Easy Learning">
+                </div>
+            </div>
+
+            <!-- FEATURED -->
+            <div class="project-box">
+                <div class="project-header">
+                    <h3 data-en="Featured Learning" data-kh="ការសិក្សាពិសេស">Featured Learning</h3>
+                </div>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="asset/images/3.png" alt="Fruit Farming">
+                        <h4 data-en="Fruit Farming" data-kh="កសិកម្មផ្លែឈើ">Fruit Farming</h4>
+                        <p data-en="Professional Guide" data-kh="មគ្គុទេសក៍វិជ្ជាជីវៈ">Professional Guide</p>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="asset/images/2.png" alt="Rice Production">
+                        <h4 data-en="Rice Production" data-kh="ផលិតកម្មស្រូវ">Rice Production</h4>
+                        <p data-en="Best Quality" data-kh="គុណភាពល្អ">Best Quality</p>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="asset/images/4.png" alt="Organic Farming">
+                        <h4 data-en="Organic Farming" data-kh="កសិកម្មសរីរាង្គ">Organic Farming</h4>
+                        <p data-en="Healthy Crops" data-kh="ដំណាំសុខភាព">Healthy Crops</p>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="asset/images/3.png" alt="Community Support">
+                        <h4 data-en="Community Support" data-kh="គាំទ្រសហគមន៍">Community Support</h4>
+                        <p data-en="Connect Farmers" data-kh="ភ្ជាប់កសិករ">Connect Farmers</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>Damnam</span>
+                </div>
+                <p data-en="Supporting Cambodian farmers with smart agriculture technology and modern learning."
+                    data-kh="គាំទ្រកសិករកម្ពុជាជាមួយបច្ចេកវិទ្យាកសិកម្មឆ្លាតវៃ និងការសិក្សាទំនើប។">
+                    Supporting Cambodian farmers with smart agriculture technology and modern learning.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3 data-en="Quick Links" data-kh="តំណភ្ជាប់រហ័ស">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-kh="ទំព័រដើម">Home</a></li>
+                    <li><a href="crops.html" data-en="Crops" data-kh="ដំណាំ">Crops</a></li>
+                    <li><a href="learning.html" data-en="Learning" data-kh="ការសិក្សា">Learning</a></li>
+                    <li><a href="contact.html" data-en="Contact" data-kh="ទំនាក់ទំនង">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3 data-en="Contact Info" data-kh="ព័ត៌មានទំនាក់ទំនង">Contact Info</h3>
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>damnam@gmail.com</span>
+                </p>
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+855 12 345 678</span>
+                </p>
+                <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span data-en="Phnom Penh" data-kh="ភ្នំពេញ">Phnom Penh</span>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- FIREBASE INTEGRATION -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAHRAnMG3Tuyav5cbZKWUgfSHwzk0b4iyg",
+            authDomain: "my-damnam.firebaseapp.com",
+            projectId: "my-damnam",
+            storageBucket: "my-damnam.firebasestorage.app",
+            messagingSenderId: "652366628351",
+            appId: "1:652366628351:web:6a0541388eec8a33a193ca",
+            measurementId: "G-G41K4XYMCR"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function loadHomePage() {
+            const docRef = doc(db, "homepage", "main");
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+
+                // Keep default values or set dynamic values based on language choice if saved that way
+                const lang = document.getElementById("langSwitch").value;
+                document.getElementById("heroTitle").innerText = lang === "kh" && data.heroTitle_kh ? data.heroTitle_kh : data.heroTitle_en;
+                document.getElementById("heroDesc").innerText = lang === "kh" && data.heroDesc_kh ? data.heroDesc_kh : data.heroDesc_en;
+
+                document.querySelector(".hero").style.background = `linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url('${data.heroImage}') center/cover`;
+            }
+        }
+
+        // Run on load
+        loadHomePage();
+
+        // Re-fetch or translate hero content when switching language natively
+        document.getElementById("langSwitch").addEventListener("change", () => {
+            loadHomePage();
+        });
+    </script>
+
+    <!-- TRANSLATION SCRIPT -->
+    <script>
+        const langSwitch = document.getElementById("langSwitch");
+
+        function switchLang(lang) {
+            document.querySelectorAll("[data-en]").forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    el.innerText = text;
+                }
+            });
+
+            document.body.classList.toggle("khmer", lang === "kh");
+        }
+
+        langSwitch.addEventListener("change", (e) => {
+            switchLang(e.target.value);
+        });
+    </script>
+
+    <script type="module" src="js/navbar-auth.js"></script>
+</body>
+
+</html>

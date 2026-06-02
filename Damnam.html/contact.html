@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Damnam | Contact</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/shared-navbar.css">
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- KHMER FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <!-- LOGO -->
+
+            <div class="logo">
+
+                <i class="fa-solid fa-seedling"></i>
+
+                <span>
+
+                    Damnam
+
+                </span>
+
+            </div>
+
+            <!-- MENU -->
+
+            <ul class="nav-menu">
+
+                <li>
+                    <a href="index.html" data-en="Home" data-kh="ទំព័រដើម">
+
+                        Home
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href="crops.html" data-en="Crops" data-kh="ដំណាំ">
+
+                        Crops
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href="learning.html" data-en="Learning" data-kh="ការសិក្សា">
+
+                        Learning
+
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html" data-en="About" data-kh="អំពីយើង">
+
+                        About
+
+                    </a>
+                </li>
+
+                <li>
+                    <a class="active" href="contact.html" data-en="Contact" data-kh="ទំនាក់ទំនង">
+
+                        Contact
+
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- RIGHT -->
+
+            <div class="nav-right">
+
+                <!-- LANGUAGE -->
+
+                <div class="language-box">
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    <select id="langSwitch">
+
+                        <option value="en">
+
+                            EN
+
+                        </option>
+
+                        <option value="kh">
+
+                            KH
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- USER MENU -->
+                <div class="user-box">
+
+                    <div id="guestMenu">
+                        <a href="login.html" class="login-btn" data-en="Login" data-kh="ចូលគណនី">
+                            Login
+                        </a>
+                    </div>
+
+                    <div id="userMenu" class="hidden">
+                        <button id="userBtn" class="user-btn">
+                            <i class="fa-solid fa-user"></i>
+                            <span id="userName">User</span>
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a id="dashboardLink" href="#" data-en="Dashboard" data-kh="ផ្ទាំងគ្រប់គ្រង">
+                                Dashboard
+                            </a>
+
+                            <button id="logoutBtn" data-en="Logout" data-kh="ចាកចេញ">
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section class="crops-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-box">
+            <h2 data-en="Contact & Support" data-kh="ទំនាក់ទំនង & ជំនួយ">Contact & Support</h2>
+            <p data-en="Send message or get help anytime" data-kh="ផ្ញើសារ ឬ សុំជំនួយបានគ្រប់ពេល">Send message or get
+                help anytime</p>
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Contact</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- =========================================
+         CONTACT SECTION
+    ========================================== -->
+
+    <section class="contact">
+
+        <!-- FORM CARD -->
+
+        <div class="card">
+
+            <h2 data-en="Send Message" data-kh="ផ្ញើសារ">
+
+                Send Message
+
+            </h2>
+
+            <form id="contactForm">
+
+                <input id="name" type="text" placeholder="Your name" required>
+
+                <input id="email" type="email" placeholder="Your email" required>
+
+                <textarea id="message" placeholder="Message" required></textarea>
+
+                <button type="submit">
+
+                    Send
+
+                </button>
+
+            </form>
+
+            <p id="msg"></p>
+
+        </div>
+
+        <!-- INFO CARD -->
+
+        <div class="card info">
+
+            <h2 data-en="Info" data-kh="ព័ត៌មាន">
+
+                Info
+
+            </h2>
+
+            <p>
+
+                <i class="fa-solid fa-envelope"></i>
+
+                support@damnam.com
+
+            </p>
+
+            <p>
+
+                <i class="fa-solid fa-phone"></i>
+
+                +855 12 345 678
+
+            </p>
+
+            <p>
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                Phnom Penh
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>Damnam</span>
+                </div>
+                <p data-en="Supporting Cambodian farmers with smart agriculture technology and modern learning."
+                    data-kh="គាំទ្រកសិករកម្ពុជាជាមួយបច្ចេកវិទ្យាកសិកម្មឆ្លាតវៃ និងការសិក្សាទំនើប។">
+                    Supporting Cambodian farmers with smart agriculture technology and modern learning.
+                </p>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3 data-en="Quick Links" data-kh="តំណភ្ជាប់រហ័ស">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" data-en="Home" data-kh="ទំព័រដើម">Home</a></li>
+                    <li><a href="crops.html" data-en="Crops" data-kh="ដំណាំ">Crops</a></li>
+                    <li><a href="learning.html" data-en="Learning" data-kh="ការសិក្សា">Learning</a></li>
+                    <li><a href="contact.html" data-en="Contact" data-kh="ទំនាក់ទំនង">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3 data-en="Contact Info" data-kh="ព័ត៌មានទំនាក់ទំនង">Contact Info</h3>
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>damnam@gmail.com</span>
+                </p>
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+855 12 345 678</span>
+                </p>
+                <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span data-en="Phnom Penh" data-kh="ភ្នំពេញ">Phnom Penh</span>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- =========================================
+         LANGUAGE SCRIPT
+    ========================================== -->
+
+    <script>
+
+        function applyLang() {
+
+            const lang =
+                document.getElementById("langSwitch").value;
+
+            localStorage.setItem("damnamLang", lang);
+
+            document.querySelectorAll("[data-en]").forEach(el => {
+                el.innerText =
+                    lang === "kh"
+                        ? el.dataset.kh
+                        : el.dataset.en;
+            });
+
+            document.body.style.fontFamily =
+                lang === "kh"
+                    ? "'Noto Sans Khmer', sans-serif"
+                    : "'Poppins', sans-serif";
+        }
+
+        const savedLang =
+            localStorage.getItem("damnamLang") || "en";
+
+        document.getElementById("langSwitch").value = savedLang;
+
+        applyLang();
+
+        document.getElementById("langSwitch")
+            .addEventListener("change", applyLang);
+
+    </script>
+
+    <!-- JS -->
+    <script type="module" src="contact.js"></script>
+    <script type="module" src="js/navbar-auth.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+/* Shared public navbar - Static Minimal Design */
+body {
+    font-size: 16px;
+}
+
+header.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(10, 33, 28, 0.78) !important;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+header.navbar .nav-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 4%;
+    box-sizing: border-box;
+    height: 82px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 26px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+header.navbar .logo i {
+    color: #8df06f;
+    font-size: 32px;
+}
+
+header.navbar .nav-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    margin: 0;
+    padding: 0;
+}
+
+header.navbar .nav-menu li {
+    position: relative;
+}
+
+header.navbar .nav-menu a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 0;
+    transition: 0.3s;
+}
+
+header.navbar .nav-menu a:hover,
+header.navbar .nav-menu a.active {
+    color: #8df06f;
+}
+
+header.navbar .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header.navbar .language-box {
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #2e7d32;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 999px;
+    padding: 0 18px;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+header.navbar .language-box i {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+header.navbar .language-box select {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 12px;
+}
+
+header.navbar .language-box::after {
+    content: '\25BC';
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-left: 6px;
+    pointer-events: none;
+}
+
+header.navbar .language-box option {
+    color: #1f2937;
+}
+
+header.navbar .user-box {
+    position: relative;
+}
+
+header.navbar .login-btn,
+header.navbar .user-btn,
+header.navbar .cart-btn {
+    min-height: 40px;
+    border: none;
+    border-radius: 50px;
+    background: #2e7d32;
+    color: #ffffff;
+    padding: 10px 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+header.navbar .login-btn:hover,
+header.navbar .user-btn:hover,
+header.navbar .cart-btn:hover {
+    background: #1b5e20;
+}
+
+header.navbar .cart-btn {
+    width: auto;
+    min-width: 48px;
+    padding: 0 14px;
+}
+
+header.navbar .cart-btn span {
+    min-width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #1f7d35;
+    font-size: 12px;
+}
+
+header.navbar .hidden {
+    display: none !important;
+}
+
+header.navbar .dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 12px);
+    min-width: 170px;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.18);
+    display: none;
+}
+
+header.navbar .dropdown-menu.show {
+    display: grid;
+    gap: 4px;
+}
+
+header.navbar .dropdown-menu a,
+header.navbar .dropdown-menu button {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: #132719;
+    padding: 10px 12px;
+    text-align: left;
+    text-decoration: none;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+header.navbar .dropdown-menu a:hover,
+header.navbar .dropdown-menu button:hover {
+    background: #eef7ee;
+}
+
+@media (max-width: 900px) {
+    header.navbar .nav-container {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 16px 20px;
+        gap: 14px;
+    }
+
+    header.navbar .nav-menu {
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    header.navbar .nav-menu a {
+        min-height: 36px;
+    }
+
+    header.navbar .nav-menu a::after {
+        bottom: 0;
+    }
+}

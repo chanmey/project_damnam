@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Damnam Seller</title>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/seller.css">
+
+    <!-- GOOGLE FONT -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- KHMER FONT -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body class="english-font">
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <i class="fa-solid fa-seedling"></i>
+
+            <span>
+
+                Damnam Seller
+
+            </span>
+
+        </div>
+
+        <!-- MENU -->
+
+        <ul class="menu-list">
+
+            <li class="menu-item active" data-filter="all" data-scroll=".stats-grid">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span data-en="Dashboard" data-kh="ផ្ទាំងគ្រប់គ្រង">
+
+                    Dashboard
+
+                </span>
+
+            </li>
+
+            <li class="menu-item" data-filter="all" data-scroll=".table-box">
+
+                <i class="fa-solid fa-leaf"></i>
+
+                <span data-en="My Crops" data-kh="ដំណាំរបស់ខ្ញុំ">
+
+                    My Crops
+
+                </span>
+
+            </li>
+
+            <li class="menu-item" data-filter="pending" data-scroll=".table-box">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <span data-en="Pending" data-kh="កំពុងរង់ចាំ">
+
+                    Pending
+
+                </span>
+
+            </li>
+
+            <li class="menu-item" data-filter="all" data-scroll=".sold-crops-box">
+
+                <i class="fa-solid fa-basket-shopping"></i>
+
+                <span data-en="Sold Crops" data-kh="ដំណាំដែលបានលក់">
+
+                    Sold Crops
+
+                </span>
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <button class="menu-toggle">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+            <h1 data-en="Seller Dashboard" data-kh="ផ្ទាំងអ្នកលក់">
+
+                Seller Dashboard
+
+            </h1>
+
+            <div class="topbar-right">
+
+                <!-- LANGUAGE -->
+
+                <div class="language-box">
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    <select id="langSwitch">
+
+                        <option value="en">
+
+                            English
+
+                        </option>
+
+                        <option value="kh">
+
+                            Khmer
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- LOGOUT -->
+
+                <button class="logout-btn" id="logoutBtn">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span data-en="Logout" data-kh="ចាកចេញ">
+
+                        Logout
+
+                    </span>
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- =========================================
+             STATS
+        ========================================== -->
+
+        <section class="stats-grid">
+
+            <div class="stats-card">
+
+                <i class="fa-solid fa-leaf"></i>
+
+                <div>
+
+                    <h2 id="totalCrop">
+
+                        0
+
+                    </h2>
+
+                    <p data-en="Total Crops" data-kh="ដំណាំសរុប">
+
+                        Total Crops
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="stats-card">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <div>
+
+                    <h2 id="pendingCrop">
+
+                        0
+
+                    </h2>
+
+                    <p data-en="Pending Crops" data-kh="ដំណាំកំពុងរង់ចាំ">
+
+                        Pending Crops
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="stats-card">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <div>
+
+                    <h2 id="approvedCrop">
+
+                        0
+
+                    </h2>
+
+                    <p data-en="Approved Crops" data-kh="ដំណាំបានអនុម័ត">
+
+                        Approved Crops
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================
+             SELLER PROFILE
+        ========================================== -->
+
+        <section class="profile-box">
+
+            <h2 data-en="Seller Profile" data-kh="ប្រវត្តិអ្នកលក់">
+
+                Seller Profile
+
+            </h2>
+
+            <div class="profile-grid">
+
+                <div class="profile-left">
+
+                    <img id="profilePreview" src="https://via.placeholder.com/140"
+                        onerror="this.src='https://via.placeholder.com/140'">
+
+                </div>
+
+                <div class="profile-right">
+
+                    <input type="text" id="sellerName" required data-en-placeholder="Full Name"
+                        data-kh-placeholder="ឈ្មោះពេញ">
+
+                    <input type="text" id="sellerPhone" data-en-placeholder="Phone Number"
+                        data-kh-placeholder="លេខទូរស័ព្ទ">
+
+                    <input type="text" id="sellerAddress" data-en-placeholder="Address" data-kh-placeholder="អាសយដ្ឋាន">
+
+                    <input type="text" id="sellerImage" data-en-placeholder="Profile Image URL"
+                        data-kh-placeholder="តំណរូបភាព">
+
+                    <textarea id="sellerAbout" data-en-placeholder="About Seller"
+                        data-kh-placeholder="អំពីអ្នកលក់"></textarea>
+
+                    <button id="saveProfileBtn" data-en="Save Profile" data-kh="រក្សាទុកប្រវត្តិ">
+
+                        Save Profile
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================
+             ADD CROP
+        ========================================== -->
+
+        <section class="form-box">
+
+            <h2 data-en="Add Crop" data-kh="បន្ថែមដំណាំ">
+
+                Add Crop
+
+            </h2>
+
+            <input type="text" id="name_en" required data-en-placeholder="Crop Name English"
+                data-kh-placeholder="ឈ្មោះដំណាំអង់គ្លេស">
+
+            <input type="text" id="name_kh" required data-en-placeholder="Crop Name Khmer"
+                data-kh-placeholder="ឈ្មោះដំណាំខ្មែរ">
+
+            <input type="number" id="price" required data-en-placeholder="Price" data-kh-placeholder="តម្លៃ">
+
+            <input type="number" id="stock" required data-en-placeholder="Stock Kg" data-kh-placeholder="ស្តុក គីឡូ">
+
+            <select id="category">
+
+                <option value="grains">
+
+                    Grains
+
+                </option>
+
+                <option value="vegetables">
+
+                    Vegetables
+
+                </option>
+
+                <option value="fruits">
+
+                    Fruits
+
+                </option>
+
+            </select>
+
+            <input type="text" id="image" required data-en-placeholder="Image URL" data-kh-placeholder="តំណរូបភាព">
+
+            <button id="saveCropBtn" data-en="Save Crop" data-kh="រក្សាទុកដំណាំ">
+
+                Save Crop
+
+            </button>
+
+        </section>
+
+        <!-- =========================================
+             MY CROPS
+        ========================================== -->
+
+        <section class="table-box">
+
+            <h2 data-en="My Crops" data-kh="ដំណាំរបស់ខ្ញុំ">
+
+                My Crops
+
+            </h2>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th data-en="Image" data-kh="រូបភាព">
+
+                                Image
+
+                            </th>
+
+                            <th data-en="Name" data-kh="ឈ្មោះ">
+
+                                Name
+
+                            </th>
+
+                            <th data-en="Price" data-kh="តម្លៃ">
+
+                                Price
+
+                            </th>
+
+                            <th data-en="Stock" data-kh="ស្តុក">
+
+                                Stock
+
+                            </th>
+
+                            <th data-en="Status" data-kh="ស្ថានភាព">
+
+                                Status
+
+                            </th>
+
+                            <th data-en="Action" data-kh="សកម្មភាព">
+
+                                Action
+
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="sellerCropTable">
+
+                        <tr>
+
+                            <td colspan="6" class="empty-text" data-en="No crops yet" data-kh="មិនទាន់មានដំណាំ">
+
+                                No crops yet
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================
+             SOLD CROPS
+        ========================================== -->
+
+        <section class="table-box sold-crops-box">
+
+            <h2 data-en="Sold Crops" data-kh="ដំណាំដែលបានលក់">
+
+                Sold Crops
+
+            </h2>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th data-en="Image" data-kh="រូបភាព">
+
+                                Image
+
+                            </th>
+
+                            <th data-en="Crop" data-kh="ដំណាំ">
+
+                                Crop
+
+                            </th>
+
+                            <th data-en="Customer" data-kh="អតិថិជន">
+
+                                Customer
+
+                            </th>
+
+                            <th data-en="Quantity" data-kh="ចំនួន">
+
+                                Quantity
+
+                            </th>
+
+                            <th data-en="Total" data-kh="សរុប">
+
+                                Total
+
+                            </th>
+
+                            <th data-en="Date" data-kh="កាលបរិច្ឆេទ">
+
+                                Date
+
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="soldCropsTable">
+
+                        <tr>
+
+                            <td colspan="6" class="empty-text" data-en="No sold crops yet" data-kh="មិនទាន់មានដំណាំដែលបានលក់">
+
+                                No sold crops yet
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =========================================
+         LANGUAGE SCRIPT
+    ========================================== -->
+
+    <script>
+
+        function applyLang() {
+
+            let lang =
+                document.getElementById("langSwitch").value;
+
+            document.querySelectorAll("[data-en]")
+                .forEach(el => {
+
+                    el.innerText =
+                        lang === "kh"
+                            ? el.dataset.kh
+                            : el.dataset.en;
+
+                });
+
+            document.querySelectorAll("[data-en-placeholder]")
+                .forEach(el => {
+
+                    el.placeholder =
+                        lang === "kh"
+                            ? el.dataset.khPlaceholder
+                            : el.dataset.enPlaceholder;
+
+                });
+
+            document.body.style.fontFamily =
+                lang === "kh"
+                    ? "'Noto Sans Khmer', sans-serif"
+                    : "'Poppins', sans-serif";
+
+        }
+
+        document.getElementById("langSwitch")
+            .addEventListener("change", applyLang);
+
+        applyLang();
+
+    </script>
+
+    <!-- =========================================
+         PROFILE IMAGE PREVIEW
+    ========================================== -->
+
+    <script>
+
+        const sellerImageInput =
+            document.getElementById("sellerImage");
+
+        const profilePreview =
+            document.getElementById("profilePreview");
+
+        sellerImageInput.addEventListener("input", () => {
+
+            profilePreview.src =
+                sellerImageInput.value ||
+                "https://via.placeholder.com/140";
+
+        });
+
+    </script>
+
+    <!-- SELLER JS -->
+
+    <script type="module" src="js/seller.js">
+
+    </script>
+
+</body>
+
+</html>
